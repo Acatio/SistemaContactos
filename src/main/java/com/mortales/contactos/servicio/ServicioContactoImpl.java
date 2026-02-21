@@ -3,10 +3,11 @@ package com.mortales.contactos.servicio;
 import com.mortales.contactos.modelo.Contacto;
 import com.mortales.contactos.repositorio.IRepositorioContactos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ServicioContactoImpl implements IServicioContactos
 {
     @Autowired
