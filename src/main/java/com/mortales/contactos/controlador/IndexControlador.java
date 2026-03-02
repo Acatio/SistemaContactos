@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -27,9 +29,19 @@ public class IndexControlador
         modelo.put("contactos", contactos);
         return "index";
     }
+
     @GetMapping("/agregar")
     public String mostrarAgregarContacto()
     {
         return "agregar";
+    }
+
+    @PostMapping("/agregar")
+    public String agregar(@ModelAttribute("contacto") Contacto contacto)
+    {
+        logger.info("Contacto a agregar:" + contacto);
+        servicioContacto.guardarContacto(contacto);
+        return "redirect:/"; //redirigiendo el controlador al path "/"
+
     }
 }
