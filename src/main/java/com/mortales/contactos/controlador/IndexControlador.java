@@ -54,6 +54,11 @@ public class IndexControlador
         modelo.put("contacto", contacto);
         return "editar";
     }
-
+    @PostMapping("/editar")
+    public String editarContacto(@ModelAttribute("contacto") Contacto contacto){
+        logger.info("Contacto a guardar (editar): "+contacto);
+        servicioContacto.guardarContacto(contacto);
+        return "redirect:/";
+    }
 
 }
